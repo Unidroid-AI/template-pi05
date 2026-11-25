@@ -1,4 +1,4 @@
-# unidroid-template-pi05
+# template-pi05
 
 Submission template for the `pi05` brain (pi0.5 VLA, OpenPI runtime). It is not tied to a task: it serves any pi0.5 checkpoint. The reference code loads the released `pi05_droid_jointpos` checkpoint. Copy your trained weights into `weights/` and submit.
 
