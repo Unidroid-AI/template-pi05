@@ -3,11 +3,11 @@
 #
 # SPDX-License-Identifier: BSD-3-Clause
 
-"""pi0.5 DROID joint-position brain for the Franka tabletop task.
+"""pi0.5 DROID joint-position brain reference implementation.
 
 ``weights/`` is the released ``pi05_droid_jointpos`` checkpoint. The OpenPI
 runtime lives in the brain image. The policy reads the left exterior and wrist
-cameras, the seven arm joints, and the gripper, then returns this task's 8-D
+cameras, the seven arm joints, and the gripper, then returns an 8-D
 absolute joint command.
 """
 

@@ -1,6 +1,6 @@
 # unidroid-template-pi05
 
-Submission template for the `pi05` brain on the Franka tabletop task. It runs the released `pi05_droid_jointpos` checkpoint from OpenPI. Copy your trained weights into `weights/` and submit.
+Submission template for the `pi05` brain (pi0.5 VLA, OpenPI runtime). It is not tied to a task: it serves any pi0.5 checkpoint. The reference code loads the released `pi05_droid_jointpos` checkpoint. Copy your trained weights into `weights/` and submit.
 
 ## Quickstart
 
@@ -38,7 +38,7 @@ Everything except the file layout that `udcli submission check` enforces.
 
 `agent.yaml` sets `policy_config` to `pi05_droid_jointpos` and horizon 15.
 
-The policy reads the tabletop left exterior camera, wrist camera, arm joints, and gripper. `agent.yaml` lists those two cameras, so the simulator does not render the others. OpenPI turns the model's joint-position deltas into absolute joint targets. The gripper closes when its command is above 0.5. Loading the checkpoint requires the pi0.5 runtime from the brain image.
+The reference policy reads an exterior camera, a wrist camera, the arm joints, and the gripper. `agent.yaml` lists those two cameras, so the simulator does not render the others. Camera names, joint count and action dimension are robot-specific; change them in `agent.yaml` and `brain/adapt.py` for your robot and task. OpenPI turns the model's joint-position deltas into absolute joint targets. The gripper closes when its command is above 0.5. Loading the checkpoint requires the pi0.5 runtime from the brain image.
 
 All envs of one simulator scene go through the model in one forward pass, padded to 1, 4, or 16 rows. The three shapes are compiled while the brain starts, and a row's padded size depends only on how many envs the scene has, so results do not depend on timing. `observation.image_hw` is `126x224`, so the simulator resizes frames once on the GPU instead of sending 720x1280 images. JAX reserves `max_gpu_mem_gb` (16 GiB) of the GPU, not a fraction of it, so a larger GPU leaves the rest to the simulator.
 
