@@ -1,0 +1,18 @@
+# Python
+**/__pycache__/
+**/*.py[cod]
+**/*.egg-info/
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+
+# OS and editors
+.DS_Store
+Thumbs.db
+**/.idea/
+**/.vscode/
+*.swp
+
+# pi05_droid_jointpos checkpoint. Download into weights/; see README.md.
+weights/params/
+weights/assets/
